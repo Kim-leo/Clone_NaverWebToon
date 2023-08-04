@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Long time no see Swift")
+        print("Github log in complete")
     }
 
 
