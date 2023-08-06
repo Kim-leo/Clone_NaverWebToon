@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6296F6F2A7FCA5B0034B350 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F6E2A7FCA5B0034B350 /* TabbarVC.swift */; };
+		E6296F712A7FCC450034B350 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F702A7FCC450034B350 /* FirstViewController.swift */; };
+		E6296F732A7FCC500034B350 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F722A7FCC500034B350 /* SecondViewController.swift */; };
+		E6296F752A7FCC580034B350 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F742A7FCC580034B350 /* ThirdViewController.swift */; };
+		E6296F772A7FCC5E0034B350 /* ForthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F762A7FCC5E0034B350 /* ForthViewController.swift */; };
+		E6296F792A7FCC650034B350 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F782A7FCC650034B350 /* FifthViewController.swift */; };
 		E6E603862A7D27FB00425FC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603852A7D27FB00425FC5 /* AppDelegate.swift */; };
 		E6E603882A7D27FB00425FC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */; };
-		E6E6038A2A7D27FB00425FC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603892A7D27FB00425FC5 /* ViewController.swift */; };
 		E6E6038D2A7D27FB00425FC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E6038B2A7D27FB00425FC5 /* Main.storyboard */; };
 		E6E603902A7D27FB00425FC5 /* Clone_NaverWebToon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6E6038E2A7D27FB00425FC5 /* Clone_NaverWebToon.xcdatamodeld */; };
 		E6E603922A7D27FD00425FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E603912A7D27FD00425FC5 /* Assets.xcassets */; };
@@ -17,10 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E6296F6E2A7FCA5B0034B350 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
+		E6296F702A7FCC450034B350 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		E6296F722A7FCC500034B350 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E6296F742A7FCC580034B350 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		E6296F762A7FCC5E0034B350 /* ForthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthViewController.swift; sourceTree = "<group>"; };
+		E6296F782A7FCC650034B350 /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 		E6E603822A7D27FB00425FC5 /* Clone_NaverWebToon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clone_NaverWebToon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E603852A7D27FB00425FC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E6E603892A7D27FB00425FC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E6E6038C2A7D27FB00425FC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6E6038F2A7D27FB00425FC5 /* Clone_NaverWebToon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clone_NaverWebToon.xcdatamodel; sourceTree = "<group>"; };
 		E6E603912A7D27FD00425FC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +49,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E6296F6D2A7FCA480034B350 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				E6296F6E2A7FCA5B0034B350 /* TabbarVC.swift */,
+				E6296F702A7FCC450034B350 /* FirstViewController.swift */,
+				E6296F722A7FCC500034B350 /* SecondViewController.swift */,
+				E6296F742A7FCC580034B350 /* ThirdViewController.swift */,
+				E6296F762A7FCC5E0034B350 /* ForthViewController.swift */,
+				E6296F782A7FCC650034B350 /* FifthViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		E6E603792A7D27FB00425FC5 = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +81,9 @@
 		E6E603842A7D27FB00425FC5 /* Clone_NaverWebToon */ = {
 			isa = PBXGroup;
 			children = (
+				E6296F6D2A7FCA480034B350 /* VC */,
 				E6E603852A7D27FB00425FC5 /* AppDelegate.swift */,
 				E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */,
-				E6E603892A7D27FB00425FC5 /* ViewController.swift */,
 				E6E6038B2A7D27FB00425FC5 /* Main.storyboard */,
 				E6E603912A7D27FD00425FC5 /* Assets.xcassets */,
 				E6E603932A7D27FD00425FC5 /* LaunchScreen.storyboard */,
@@ -141,9 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6E6038A2A7D27FB00425FC5 /* ViewController.swift in Sources */,
+				E6296F792A7FCC650034B350 /* FifthViewController.swift in Sources */,
+				E6296F732A7FCC500034B350 /* SecondViewController.swift in Sources */,
+				E6296F712A7FCC450034B350 /* FirstViewController.swift in Sources */,
 				E6E603902A7D27FB00425FC5 /* Clone_NaverWebToon.xcdatamodeld in Sources */,
+				E6296F752A7FCC580034B350 /* ThirdViewController.swift in Sources */,
 				E6E603862A7D27FB00425FC5 /* AppDelegate.swift in Sources */,
+				E6296F6F2A7FCA5B0034B350 /* TabbarVC.swift in Sources */,
+				E6296F772A7FCC5E0034B350 /* ForthViewController.swift in Sources */,
 				E6E603882A7D27FB00425FC5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
