@@ -13,6 +13,9 @@
 		E6296F752A7FCC580034B350 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F742A7FCC580034B350 /* ThirdViewController.swift */; };
 		E6296F772A7FCC5E0034B350 /* ForthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F762A7FCC5E0034B350 /* ForthViewController.swift */; };
 		E6296F792A7FCC650034B350 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F782A7FCC650034B350 /* FifthViewController.swift */; };
+		E6296F7C2A82198C0034B350 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F7B2A82198C0034B350 /* TestViewController.swift */; };
+		E6296F7F2A821D0D0034B350 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F7D2A821D0D0034B350 /* TestCell.swift */; };
+		E6296F802A821D0D0034B350 /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6296F7E2A821D0D0034B350 /* TestCell.xib */; };
 		E6E603862A7D27FB00425FC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603852A7D27FB00425FC5 /* AppDelegate.swift */; };
 		E6E603882A7D27FB00425FC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */; };
 		E6E6038D2A7D27FB00425FC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E6038B2A7D27FB00425FC5 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 		E6296F742A7FCC580034B350 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		E6296F762A7FCC5E0034B350 /* ForthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthViewController.swift; sourceTree = "<group>"; };
 		E6296F782A7FCC650034B350 /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
+		E6296F7B2A82198C0034B350 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		E6296F7D2A821D0D0034B350 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		E6296F7E2A821D0D0034B350 /* TestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		E6E603822A7D27FB00425FC5 /* Clone_NaverWebToon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clone_NaverWebToon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E603852A7D27FB00425FC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +68,16 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
+		E6296F7A2A82197F0034B350 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				E6296F7B2A82198C0034B350 /* TestViewController.swift */,
+				E6296F7D2A821D0D0034B350 /* TestCell.swift */,
+				E6296F7E2A821D0D0034B350 /* TestCell.xib */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		E6E603792A7D27FB00425FC5 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +97,7 @@
 		E6E603842A7D27FB00425FC5 /* Clone_NaverWebToon */ = {
 			isa = PBXGroup;
 			children = (
+				E6296F7A2A82197F0034B350 /* Test */,
 				E6296F6D2A7FCA480034B350 /* VC */,
 				E6E603852A7D27FB00425FC5 /* AppDelegate.swift */,
 				E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */,
@@ -152,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E603952A7D27FD00425FC5 /* LaunchScreen.storyboard in Resources */,
+				E6296F802A821D0D0034B350 /* TestCell.xib in Resources */,
 				E6E603922A7D27FD00425FC5 /* Assets.xcassets in Resources */,
 				E6E6038D2A7D27FB00425FC5 /* Main.storyboard in Resources */,
 			);
@@ -164,6 +182,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6296F7F2A821D0D0034B350 /* TestCell.swift in Sources */,
+				E6296F7C2A82198C0034B350 /* TestViewController.swift in Sources */,
 				E6296F792A7FCC650034B350 /* FifthViewController.swift in Sources */,
 				E6296F732A7FCC500034B350 /* SecondViewController.swift in Sources */,
 				E6296F712A7FCC450034B350 /* FirstViewController.swift in Sources */,
