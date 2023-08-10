@@ -18,6 +18,18 @@ class FirstViewController: UIViewController {
     let weekTextArrays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     
     //MARK: - UI Components
+    lazy var entireScrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.backgroundColor = .darkGray
+        return sv
+    }()
+    
+    lazy var contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     lazy var topView: UIView = {
         let view = UIView()
         view.backgroundColor = colorArrays.first
@@ -29,7 +41,7 @@ class FirstViewController: UIViewController {
         label.textAlignment = .center
         label.text = "\(nowPage + 1) / 5"
         label.textColor = .white
-        label.backgroundColor = .darkGray
+        label.backgroundColor = .clear
         label.alpha = 0.8
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
@@ -73,6 +85,12 @@ class FirstViewController: UIViewController {
         return cv
     }()
     
+    lazy var thinDividingLine: UIView = {
+        let v = UIView()
+        v.backgroundColor = .lightGray
+        return v
+    }()
+    
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -95,10 +113,15 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController {
     func addComponentsInView() {
-        self.view.addSubview(topView)
+        
+        self.view.addSubview(entireScrollView)
+        entireScrollView.addSubview(contentView)
+        
+        contentView.addSubview(topView)
         topView.addSubview(numLabel)
         topView.addSubview(topCollectionView)
-        self.view.addSubview(weekCollectionView)
+        contentView.addSubview(weekCollectionView)
+        contentView.addSubview(thinDividingLine)
         
         topCollectionView.delegate = self
         topCollectionView.dataSource = self
@@ -107,10 +130,24 @@ extension FirstViewController {
     }
     
     func componentsLayout() {
+        entireScrollView.translatesAutoresizingMaskIntoConstraints = false
+        entireScrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        entireScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        entireScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        entireScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: entireScrollView.topAnchor).isActive = true
+        contentView.heightAnchor.constraint(equalTo: entireScrollView.heightAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: entireScrollView.widthAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: entireScrollView.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: entireScrollView.trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: entireScrollView.bottomAnchor).isActive = true
+        
         topView.translatesAutoresizingMaskIntoConstraints = false
-        topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        topView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor).isActive = true
+        topView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        topView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         topView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
         topCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -128,9 +165,15 @@ extension FirstViewController {
         
         weekCollectionView.translatesAutoresizingMaskIntoConstraints = false
         weekCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
-        weekCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 1).isActive = true
-        weekCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -1).isActive = true
+        weekCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 1).isActive = true
+        weekCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -1).isActive = true
         weekCollectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        thinDividingLine.translatesAutoresizingMaskIntoConstraints = false
+        thinDividingLine.topAnchor.constraint(equalTo: weekCollectionView.bottomAnchor).isActive = true
+        thinDividingLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        thinDividingLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        thinDividingLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
     func recognizingGestures() {
