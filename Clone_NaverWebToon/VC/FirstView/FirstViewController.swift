@@ -1,19 +1,23 @@
 //
-//  TestViewController.swift
+//  FirstViewController.swift
 //  Clone_NaverWebToon
 //
-//  Created by 김승현 on 2023/08/08.
+//  Created by 김승현 on 2023/08/06.
 //
 
 import UIKit
 
-class TestViewController: UIViewController {
+class FirstViewController: UIViewController {
     
+    // MARK: - Variables
     var nowPage: Int = 0
+    var weekChosenPage: Int = 0
     let colorArrays: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue]
     let colorArrays2: [UIColor] = [.systemGreen, .systemBlue, .systemRed, .systemMint, .systemPink]
     let sampleImages = [UIImage(systemName:"house"), UIImage(systemName:"pencil"), UIImage(systemName:"folder"), UIImage(systemName:"person"), UIImage(systemName:"cloud")]
+    let weekTextArrays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     
+    //MARK: - UI Components
     lazy var topView: UIView = {
         let view = UIView()
         view.backgroundColor = colorArrays.first
@@ -43,6 +47,7 @@ class TestViewController: UIViewController {
         layout.headerReferenceSize = .zero
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 0
         cv.isScrollEnabled = false
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
@@ -53,26 +58,43 @@ class TestViewController: UIViewController {
     lazy var weekCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
         layout.footerReferenceSize = .zero
         layout.headerReferenceSize = .zero
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 1
         cv.isScrollEnabled = true
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
         cv.register(WeekCell.self, forCellWithReuseIdentifier: "WeekCell")
-        cv.backgroundColor = .systemBlue
+        cv.backgroundColor = .darkGray
         return cv
     }()
     
-    
-   
+    //MARK: - View Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.view.backgroundColor = .white
         
+        addComponentsInView()
+        componentsLayout()
+        recognizingGestures()
+        
+    }
+    
+    
+    
+}
+
+extension FirstViewController {
+    func addComponentsInView() {
         self.view.addSubview(topView)
         topView.addSubview(numLabel)
         topView.addSubview(topCollectionView)
@@ -80,8 +102,38 @@ class TestViewController: UIViewController {
         
         topCollectionView.delegate = self
         topCollectionView.dataSource = self
-        componentsLayout()
+        weekCollectionView.delegate = self
+        weekCollectionView.dataSource = self
+    }
+    
+    func componentsLayout() {
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
+        topCollectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10).isActive = true
+        topCollectionView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        topCollectionView.leadingAnchor.constraint(equalTo: topView.leadingAnchor).isActive = true
+        topCollectionView.trailingAnchor.constraint(equalTo: topView.trailingAnchor).isActive = true
+        topCollectionView.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -10).isActive = true
+        
+        numLabel.translatesAutoresizingMaskIntoConstraints = false
+        numLabel.bottomAnchor.constraint(equalTo: topCollectionView.topAnchor, constant: -10).isActive = true
+        numLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -10).isActive = true
+        numLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        numLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        weekCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        weekCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
+        weekCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 1).isActive = true
+        weekCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -1).isActive = true
+        weekCollectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    func recognizingGestures() {
         let leftSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipteGesture(_:)))
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         topView.addGestureRecognizer(leftSwipe)
@@ -89,10 +141,7 @@ class TestViewController: UIViewController {
         let rightSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipteGesture(_:)))
         rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
         topView.addGestureRecognizer(rightSwipe)
-        
-        
     }
-    
     
     @objc func respondToSwipteGesture(_ gesture: UIGestureRecognizer) {
         if let swipeGestrue = gesture as? UISwipeGestureRecognizer {
@@ -141,9 +190,7 @@ class TestViewController: UIViewController {
     }
 }
 
- 
-
-extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        if scrollView.frame.size.width != 0 {
@@ -153,52 +200,68 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        switch scrollView.tag {
+        case 0:
+            nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        case 1:
+            print("Hello")
+        default:
+            break
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 5
+        switch collectionView.tag {
+        case 0:
+            return 5
+        case 1:
+            return weekTextArrays.count
+        default:
+            return 0
+            break
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopCell", for: indexPath) as! TopCell
-//        cell.parent = self
-        cell.titleView.backgroundColor = colorArrays[indexPath.row]
-        return cell
+        switch collectionView.tag {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopCell", for: indexPath) as! TopCell
+            cell.parent = self
+            cell.titleView.backgroundColor = colorArrays[indexPath.row]
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekCell", for: indexPath) as! WeekCell
+            cell.parent = self
+            cell.eachCellLabel.text = "\(weekTextArrays[indexPath.row])"
+            
+            if indexPath.item == 0 {
+                cell.isSelected = true
+            } else {
+                cell.isSelected = false
+            }
+            return cell
+        default:
+            return UICollectionViewCell()
+            break
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+        switch collectionView.tag {
+        case 0:
+            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+        case 1:
+            let width = collectionView.frame.size.width / CGFloat(weekTextArrays.count)
+            
+            return CGSize(width: width, height: collectionView.frame.size.height)
+        default:
+            return CGSize()
+            break
+        }
+        
     }
     
     
     
-    
-    func componentsLayout() {
-        topView.translatesAutoresizingMaskIntoConstraints = false
-        topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        
-        topCollectionView.translatesAutoresizingMaskIntoConstraints = false
-//        collectionView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10).isActive = true
-        topCollectionView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        topCollectionView.leadingAnchor.constraint(equalTo: topView.leadingAnchor).isActive = true
-        topCollectionView.trailingAnchor.constraint(equalTo: topView.trailingAnchor).isActive = true
-        topCollectionView.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -10).isActive = true
-        
-        numLabel.translatesAutoresizingMaskIntoConstraints = false
-        numLabel.bottomAnchor.constraint(equalTo: topCollectionView.topAnchor, constant: -10).isActive = true
-        numLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -10).isActive = true
-        numLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        numLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        weekCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        weekCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
-        weekCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        weekCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        weekCollectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    }
 }

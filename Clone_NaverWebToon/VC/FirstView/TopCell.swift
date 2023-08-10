@@ -7,10 +7,11 @@
 
 import UIKit
 
-class TestCell: UICollectionViewCell {
+class TopCell: UICollectionViewCell {
     
-    weak var parent = TestViewController()
+    weak var parent = FirstViewController()
     
+    // MARK: - UIComponents
     let titleView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5
@@ -26,7 +27,8 @@ class TestCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+//        self.contentView.addSubview(titleView)
+        setupLayoutForTopCell()
         self.contentView.backgroundColor = .systemGray5
     }
     
@@ -36,8 +38,8 @@ class TestCell: UICollectionViewCell {
 
 }
 
-extension TestCell {
-    func setupUI() {
+extension TopCell {
+    func setupLayoutForTopCell() {
         self.contentView.addSubview(titleView)
         
         titleView.translatesAutoresizingMaskIntoConstraints = false
