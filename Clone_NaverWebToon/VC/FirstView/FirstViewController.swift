@@ -15,7 +15,7 @@ class FirstViewController: UIViewController {
     let colorArrays: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue]
     let colorArrays2: [UIColor] = [.systemGreen, .systemBlue, .systemRed, .systemMint, .systemPink]
     let sampleImages = [UIImage(systemName:"house"), UIImage(systemName:"pencil"), UIImage(systemName:"folder"), UIImage(systemName:"person"), UIImage(systemName:"cloud")]
-    let weekTextArrays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
+    let weekTextArrays: [String] = ["신작", "매일+", "월", "화", "수", "목", "금", "토", "일", "완결"]
     
     //MARK: - UI Components
     lazy var entireScrollView: UIScrollView = {
@@ -91,6 +91,52 @@ class FirstViewController: UIViewController {
         return v
     }()
     
+    lazy var weekDayCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.footerReferenceSize = .zero
+        layout.headerReferenceSize = .zero
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 2
+        cv.isPagingEnabled = true
+        cv.isPagingEnabled = true
+        cv.showsHorizontalScrollIndicator = false
+        cv.register(WeekDayCell.self, forCellWithReuseIdentifier: "WeekDayCell")
+        cv.backgroundColor = .lightGray
+        return cv
+    }()
+    
+    lazy var middleAdView: UIImageView = {
+        let v = UIImageView()
+        v.backgroundColor = .systemOrange
+        v.layer.masksToBounds = true
+        v.layer.cornerRadius = 5
+        return v
+    }()
+    
+    lazy var eachDayCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 0
+        layout.footerReferenceSize = .zero
+        layout.headerReferenceSize = .zero
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 3
+        cv.isPagingEnabled = true
+        cv.isPagingEnabled = true
+        cv.showsHorizontalScrollIndicator = false
+//        cv.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
+        cv.backgroundColor = .lightGray
+        return cv
+    }()
+    
+    
+    
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -122,11 +168,17 @@ extension FirstViewController {
         topView.addSubview(topCollectionView)
         contentView.addSubview(weekCollectionView)
         contentView.addSubview(thinDividingLine)
+        contentView.addSubview(weekDayCollectionView)
+        
+//        weekDayCollectionView.addSubview(middleAdView)
+//        weekDayCollectionView.addSubview(eachDayCollectionView)
         
         topCollectionView.delegate = self
         topCollectionView.dataSource = self
         weekCollectionView.delegate = self
         weekCollectionView.dataSource = self
+        weekDayCollectionView.delegate = self
+        weekDayCollectionView.dataSource = self
     }
     
     func componentsLayout() {
@@ -174,6 +226,24 @@ extension FirstViewController {
         thinDividingLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         thinDividingLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         thinDividingLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        weekDayCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        weekDayCollectionView.topAnchor.constraint(equalTo: thinDividingLine.bottomAnchor).isActive = true
+        weekDayCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        weekDayCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        weekDayCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+//        middleAdView.translatesAutoresizingMaskIntoConstraints = false
+//        middleAdView.topAnchor.constraint(equalTo: weekDayCollectionView.topAnchor, constant: 10).isActive = true
+//        middleAdView.leadingAnchor.constraint(equalTo: weekDayCollectionView.leadingAnchor, constant: 10).isActive = true
+//        middleAdView.trailingAnchor.constraint(equalTo: weekDayCollectionView.trailingAnchor, constant: -10).isActive = true
+//        middleAdView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+////
+//        eachDayCollectionView.translatesAutoresizingMaskIntoConstraints = false
+//        eachDayCollectionView.topAnchor.constraint(equalTo: middleAdView.bottomAnchor, constant: 10).isActive = true
+//        eachDayCollectionView.leadingAnchor.constraint(equalTo: weekDayCollectionView.leadingAnchor, constant: 10).isActive = true
+//        eachDayCollectionView.trailingAnchor.constraint(equalTo: weekDayCollectionView.trailingAnchor, constant: -10).isActive = true
+//        eachDayCollectionView.bottomAnchor.constraint(equalTo: weekDayCollectionView.bottomAnchor, constant: -10).isActive = true
     }
     
     func recognizingGestures() {
@@ -233,6 +303,7 @@ extension FirstViewController {
     }
 }
 
+// MARK: - CollectionView Extension
 extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -260,6 +331,8 @@ extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return 5
         case 1:
             return weekTextArrays.count
+        case 2:
+            return weekTextArrays.count
         default:
             return 0
             break
@@ -284,6 +357,11 @@ extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.isSelected = false
             }
             return cell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekDayCell", for: indexPath) as! WeekDayCell
+            cell.parent = self
+            
+            return cell
         default:
             return UICollectionViewCell()
             break
@@ -298,6 +376,8 @@ extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let width = collectionView.frame.size.width / CGFloat(weekTextArrays.count)
             
             return CGSize(width: width, height: collectionView.frame.size.height)
+        case 2:
+            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
         default:
             return CGSize()
             break

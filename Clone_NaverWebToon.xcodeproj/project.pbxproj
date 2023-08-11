@@ -18,6 +18,8 @@
 		E6296F802A821D0D0034B350 /* TopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6296F7E2A821D0D0034B350 /* TopCell.xib */; };
 		E6296F842A8514910034B350 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F822A8514910034B350 /* WeekCell.swift */; };
 		E6296F852A8514910034B350 /* WeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6296F832A8514910034B350 /* WeekCell.xib */; };
+		E6296F882A8664020034B350 /* WeekDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6296F862A8664020034B350 /* WeekDayCell.swift */; };
+		E6296F892A8664020034B350 /* WeekDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6296F872A8664020034B350 /* WeekDayCell.xib */; };
 		E6E603862A7D27FB00425FC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603852A7D27FB00425FC5 /* AppDelegate.swift */; };
 		E6E603882A7D27FB00425FC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */; };
 		E6E6038D2A7D27FB00425FC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E6038B2A7D27FB00425FC5 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 		E6296F7E2A821D0D0034B350 /* TopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCell.xib; sourceTree = "<group>"; };
 		E6296F822A8514910034B350 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		E6296F832A8514910034B350 /* WeekCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekCell.xib; sourceTree = "<group>"; };
+		E6296F862A8664020034B350 /* WeekDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayCell.swift; sourceTree = "<group>"; };
+		E6296F872A8664020034B350 /* WeekDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDayCell.xib; sourceTree = "<group>"; };
 		E6E603822A7D27FB00425FC5 /* Clone_NaverWebToon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clone_NaverWebToon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E603852A7D27FB00425FC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E603872A7D27FB00425FC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				E6296F7E2A821D0D0034B350 /* TopCell.xib */,
 				E6296F822A8514910034B350 /* WeekCell.swift */,
 				E6296F832A8514910034B350 /* WeekCell.xib */,
+				E6296F862A8664020034B350 /* WeekDayCell.swift */,
+				E6296F872A8664020034B350 /* WeekDayCell.xib */,
 			);
 			path = FirstView;
 			sourceTree = "<group>";
@@ -184,6 +190,7 @@
 			files = (
 				E6E603952A7D27FD00425FC5 /* LaunchScreen.storyboard in Resources */,
 				E6296F802A821D0D0034B350 /* TopCell.xib in Resources */,
+				E6296F892A8664020034B350 /* WeekDayCell.xib in Resources */,
 				E6E603922A7D27FD00425FC5 /* Assets.xcassets in Resources */,
 				E6E6038D2A7D27FB00425FC5 /* Main.storyboard in Resources */,
 				E6296F852A8514910034B350 /* WeekCell.xib in Resources */,
@@ -203,6 +210,7 @@
 				E6296F792A7FCC650034B350 /* FifthViewController.swift in Sources */,
 				E6296F732A7FCC500034B350 /* SecondViewController.swift in Sources */,
 				E6296F712A7FCC450034B350 /* FirstViewController.swift in Sources */,
+				E6296F882A8664020034B350 /* WeekDayCell.swift in Sources */,
 				E6E603902A7D27FB00425FC5 /* Clone_NaverWebToon.xcdatamodeld in Sources */,
 				E6296F752A7FCC580034B350 /* ThirdViewController.swift in Sources */,
 				E6E603862A7D27FB00425FC5 /* AppDelegate.swift in Sources */,
